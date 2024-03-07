@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('tabungans', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
+            $table->unsignedBigInteger('id_user');
             $table->integer('jumlah');
             $table->string('jenis');
             $table->string('tipe');
             $table->text('keterangan');
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users'); // membuat relasi foreign key
+
         });
     }
 
