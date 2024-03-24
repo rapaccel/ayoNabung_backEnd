@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('tipe');
             $table->text('keterangan');
+            $table->unsignedBigInteger('id_kategori');
             $table->timestamps();
-            $table->foreign('id_kategori');
+            
+            $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
