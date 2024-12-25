@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TabunganController;
 
 /*
@@ -30,3 +32,13 @@ Route::post('/users/login',[UsersController::class,'authenticate']);
 Route::post('/users/logout',[UsersController::class,'logout']);
 Route::get('/users/index',[UsersController::class,'index']);
 Route::get('/users/detailUser/{id}',[UsersController::class,'detailUser']);
+Route::post('/sendWa',[UsersController::class,'sendWa']);
+Route::post('midtrans/notify',[OrdersController::class,'notify']);
+Route::get('/product/index',[ProductController::class,'index']);
+Route::post('/product/store',[ProductController::class,'store']);
+Route::get('/product/show/{id}',[ProductController::class,'show']);
+Route::put('/product/update/{id}',[ProductController::class,'update']);
+Route::delete('/product/delete/{id}',[ProductController::class,'delete']);
+
+Route::post('/orders/store',[OrdersController::class,'store']);
+Route::get('/orders/users/{id}',[OrdersController::class,'ordersByUsers']);
